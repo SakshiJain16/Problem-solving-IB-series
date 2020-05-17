@@ -1,0 +1,14 @@
+int Solution::titleToNumber(string A) {
+    int n=A.size();
+    int j=n-1;
+    int x;
+    int res=0;
+    for(int i=0;i<n;i++)
+    {
+        x=A[i]-'A'+1;
+        res+=pow(26,j)*x;
+        j--;
+    }
+    
+    return res;
+}
