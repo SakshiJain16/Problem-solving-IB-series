@@ -1,0 +1,45 @@
+/*int h_d(int a,int b)
+{
+    int set_bits=0;
+    int sum=a^b;
+    while(sum>0)
+    {
+        set_bits+=(sum&1);
+        sum>>=1;
+    }
+    return set_bits;
+}
+//TLE
+int Solution::hammingDistance(const vector<int> &A) {
+    int mod=1000000007;
+    int sum=0;
+    for(int i=0;i<A.size();i++)
+    {
+        for(int j=i+1;j<A.size();j++)
+        {
+            sum=(sum+h_d(A[i],A[j]))%mod;
+        }
+    }
+    return (2*sum);
+}*/
+#define mod 1000000007
+int Solution::hammingDistance(const vector<int> &A)
+{
+    vector<int>bin(32,0);
+    for(int i=0;i<A.size();i++)
+    {
+        int num=A[i];
+        int ind=0;
+        while(num>0){
+            bin[ind]+=(num&1);
+            ind++;
+            num>>=1;
+        }
+    }
+    int ans=0;
+    for(int i=0;i<bin.size();i++)
+    {
+        ans=(ans+2*bin[i]*(A.size()-bin[i]))%mod;
+    }
+    return ans;
+}
