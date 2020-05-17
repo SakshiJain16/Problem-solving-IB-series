@@ -1,0 +1,17 @@
+int Solution::isPalindrome(int A) {
+    
+    int rev=0;
+    int num;
+    int n=A;
+    if(n<0)
+        return false;
+    while(n!=0)
+    {
+         num=n%10;
+        rev=(rev*10)+num;
+        n=n/10;
+    }
+    if(rev!=A)
+        return false;
+ return true;   
+}
