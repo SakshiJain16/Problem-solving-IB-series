@@ -1,0 +1,36 @@
+void rot(vector<vector<int> > &A,int rs,int re,int cs,int ce)
+{
+    while(rs<re)
+    {
+        int i=0;
+        while((i+rs)<re)
+        {
+            int temp1=A[rs][cs+i];
+            int temp2=A[rs+i][ce];
+            int temp3=A[re][ce-i];
+            int temp4=A[re-i][cs];
+            
+            A[rs][cs+i]=temp4;
+            A[rs+i][ce]=temp1;
+            A[re][ce-i]=temp2;
+            A[re-i][cs]=temp3;
+            i++;
+        }
+        rs++;
+        cs++;
+        re--;
+        ce--;
+    }
+}
+void Solution::rotate(vector<vector<int> > &A) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+
+    if(A.size()==0)
+    return;
+    rot(A,0,A.size()-1,0,A.size()-1);
+    
+    
+}
